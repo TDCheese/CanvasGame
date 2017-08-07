@@ -2,91 +2,12 @@
 <html>
     <head>
         <title>Club Website Test</title>
-        <style>
-            #game {
-                background-color: black;
-            }
-        </style>
+        <script type="text/javascript" src="js/canvas.js"></script>
+        <script type="text/javascript" src="js/player.js"></script>
+        <script type="text/javascript" src="js/engine.js"></script>
     </head>
     <body onload="Engine.init()">
-        <div id='container'>
-            <canvas height="500" width="300" id="game"></canvas>
+        <div id='game'>
         </div>
-        <script>
-            var Engine = {
-
-                ship: {
-                    x: 50,
-                    y: 50,
-                    height: 10,
-                    width: 10
-                },
-
-                controls: {
-                    keyMap: {},
-                    leftArrow: 37,
-                    upArrow: 38,
-                    downArrow: 40,
-                    rightArrow: 39
-                },
-
-                init: function() {
-                    
-                    document.onkeydown = document.onkeyup = function(e) {
-                        e = e || event; // IE Hack
-
-                        Engine.controls.keyMap[e.keyCode] = e.type == 'keydown';
-                    }
-
-                    setInterval(Engine.run, 20);
-                },
-
-                run: function() {
-                    
-                    var canvas = document.getElementById('game');
-                    var context = canvas.getContext('2d');
-                    
-                    context.clearRect(0, 0, 300, 500);
-
-                    Engine.shipMove();
-
-                    context.fillStyle = 'white';
-                    context.fillRect(Engine.ship.x, Engine.ship.y, Engine.ship.height, Engine.ship.width);
-                },
-
-                shipMove: function() {
-
-                    if (Engine.controls.keyMap[Engine.controls.leftArrow]) {
-                        Engine.ship.x -= 5;
-                    }
-
-                    if (Engine.controls.keyMap[Engine.controls.upArrow]) {
-                        Engine.ship.y -= 5;
-                    }
-
-                    if (Engine.controls.keyMap[Engine.controls.downArrow]) {
-                        Engine.ship.y += 5;
-                    }
-
-                    if (Engine.controls.keyMap[Engine.controls.rightArrow]) {
-                        Engine.ship.x += 5;
-                    }
-
-                    if (Engine.ship.x > 290) {
-                        Engine.ship.x = 290;
-                    } else if (Engine.ship.x < 0) {
-                        Engine.ship.x = 0;
-                    }
-
-                    if (Engine.ship.y > 490) {
-                        Engine.ship.y = 490;
-                    } else if (Engine.ship.y < 0) {
-                        Engine.ship.y = 0;
-                    }
-                }
-                
-
-            }
-        </script>
     </body>
 </html>
