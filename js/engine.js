@@ -25,16 +25,11 @@ var Engine = {
 
     run: function() {
 
-        var ctx = document.getElementById(Canvas.ID).getContext('2d');
-
-        // Clear canvas
-        ctx.clearRect(0, 0, Canvas.width, Canvas.height);
-
         // Move player
         Player.move();
 
-        // Draw player
-        ctx.fillStyle = Player.color;
-        ctx.fillRect(Player.x, Player.y, Player.width, Player.height);
+        // Re-draw canvas
+        Canvas.draw();
+
     }
 }

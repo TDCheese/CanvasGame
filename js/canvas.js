@@ -15,5 +15,17 @@ var Canvas = {
         can.style = Canvas.backgroundColor;
 
         document.getElementById(Canvas.containerID).appendChild(can);
+    },
+
+    draw: function() {
+        var ctx = document.getElementById(Canvas.ID).getContext('2d');
+
+        // First clear the canvas before we redraw everything at it's current position.
+        ctx.clearRect(0, 0, Canvas.width, Canvas.height);
+
+        // Draw player
+        ctx.fillStyle = Player.color;
+        ctx.fillRect(Player.x, Player.y, Player.width, Player.height);
+
     }
 }
